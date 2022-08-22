@@ -1,6 +1,7 @@
 make.exe --dry-run --always-make --keep-going --print-directory
 make: Entering directory 'c:/Users/Khals/Desktop/Sorting-visualizer/Sorting-Visualizer'
-make: Leaving directory 'c:/Users/Khals/Desktop/Sorting-visualizer/Sorting-Visualizer'
  
 make: *** No targets specified and no makefile found.  Stop.
 
+make: Leaving directory 'c:/Users/Khals/Desktop/Sorting-visualizer/Sorting-Visualizer'
+ 

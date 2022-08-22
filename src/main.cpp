@@ -61,7 +61,7 @@ void SelectionSort()
         for (int j = 0; j < numbers.size(); j++) {
             if (numbers[i] <= numbers[j]) {
                 std::swap(numbers[i], numbers[j]);
-                SDL_Delay(5);
+                SDL_Delay(2);
             }
             UpdateList(numbers);       
         }
@@ -217,6 +217,7 @@ int main(int argc, char* args[])
         window.display();
         entities.clear();
         position = 10;
+        window.clear();
     }
     window.cleanUp(); // limpiamos la ventana
     SDL_Quit(); // salimos de sdl
