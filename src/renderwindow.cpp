@@ -14,7 +14,7 @@ RenderWindow::RenderWindow(const char* p_title, int p_w, int p_h)  // declaramos
 
     // nuestro renderizador es directamente nuestra gpu
     //y este utilizara la ventana para mostrar elementos
-    renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED);
+    renderer = SDL_CreateRenderer(window, -1,  SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC);
 }
 
 SDL_Renderer* RenderWindow::getRenderer()

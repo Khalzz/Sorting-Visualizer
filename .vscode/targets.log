@@ -8,7 +8,7 @@ make: *** No rule to make target 'all'.  Stop.
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
 
-# Make data base, printed on Mon Aug 22 10:26:13 2022
+# Make data base, printed on Tue Aug 23 01:07:24 2022
 
 # Variables
 
@@ -39,7 +39,7 @@ MAKE_COMMAND := C:/ProgramData/chocolatey/lib/make/tools/install/bin/make.exe
 # automatic
 @D = $(patsubst %/,%,$(patsubst %\,%,$(dir $@)))
 # environment
-CHROME_CRASHPAD_PIPE_NAME = \\.\pipe\crashpad_202604_TTJYUECWFZVOOUSN
+CHROME_CRASHPAD_PIPE_NAME = \\.\pipe\crashpad_228324_MVQRJTBORXYKVBXP
 # environment
 FPS_BROWSER_USER_PROFILE_STRING = Default
 # environment
@@ -91,7 +91,7 @@ MAKEFILE_LIST :=
 # automatic
 @F = $(notdir $@)
 # environment
-VSCODE_PID = 202604
+VSCODE_PID = 228324
 # automatic
 ?D = $(patsubst %/,%,$(patsubst %\,%,$(dir $?)))
 # automatic
@@ -217,7 +217,7 @@ PROCESSOR_IDENTIFIER = Intel64 Family 6 Model 165 Stepping 2, GenuineIntel
 
 # Directories
 
-# . (key c:/Users/Khals/Desktop/Sorting-visualizer/Sorting-Visualizer, mtime 1661178338): 11 files, no impossibilities.
+# . (key c:/Users/Khals/Desktop/Sorting-visualizer/Sorting-Visualizer, mtime 1661231161): 11 files, no impossibilities.
 
 # 11 files, no impossibilities in 1 directories.
 
@@ -277,11 +277,12 @@ GNUmakefile:
 # No general ('VPATH' variable) search path.
 
 # strcache buffers: 1 (0) / strings = 18 / storage = 141 B / avg = 7 B
-# current buf: size = 8174 B / used = 141 B / count = 18 / avg = 7 B
+# current buf: size  
+= 8174 B / used = 141 B / count = 18 / avg = 7 B
 
 # strcache performance: lookups = 21 / hit rate = 14%
 # hash-table stats:
 # Load=18/8192=0%, Rehash=0, Collisions=0/21=0%
-# Finished Make data base on Mon Aug 22 10:26:13 2022
+# Finished Make data base on Tue Aug 23 01:07:24 2022
 
  

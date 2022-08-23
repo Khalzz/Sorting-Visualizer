@@ -5,15 +5,21 @@
 #include <ctime>
 #include <cmath>
 #include <windows.h>
+#include <crtdbg.h>
 
 #include "RenderWindow.hpp"
 #include "DataEntity.hpp"
 
+
 std::vector<int> numbers(50);
 std::vector<DataEntity*> entities = {};
-RenderWindow window("Sorting visualizer", 515, 135);
+
+// todo: fix memory leak when executing the selection sort and bubble sort
+std::vector<int> comparer(50);
+bool listChanged = true;
 
 int position = 10;
+RenderWindow window("Sorting visualizer", 515, 135);
 
 std::vector<int> Randomize(std::vector<int> list)
 {
@@ -28,12 +34,26 @@ std::vector<int> Randomize(std::vector<int> list)
 
 void GenerateList(std::vector<int> list) 
 {
-    for (int p:list)
+    if (comparer == numbers)
+        {
+            listChanged == false;
+        }
+        else 
+        {
+            listChanged == true;
+        }
+
+    if (listChanged == true)
     {
-        DataEntity* entidad = new DataEntity(p, position);
-        entities.push_back(entidad);
-        position += 10;
-    }
+        entities.clear();
+        for (int p:list)
+        {
+            DataEntity* entidad = new DataEntity(p, position);
+            entities.push_back(entidad);
+            position += 10;
+        }
+        listChanged = false;
+    } 
 }
 
 void RenderList()
@@ -61,9 +81,11 @@ void SelectionSort()
         for (int j = 0; j < numbers.size(); j++) {
             if (numbers[i] <= numbers[j]) {
                 std::swap(numbers[i], numbers[j]);
-                SDL_Delay(2);
             }
-            UpdateList(numbers);       
+            listChanged = true;
+            UpdateList(numbers);   
+            listChanged = true;
+
         }
     } 
 }
@@ -76,7 +98,10 @@ void BubbleSort()
                 std::swap(numbers[j], numbers[j+1]);
                 SDL_Delay(5);
             }
+            listChanged = true;
             UpdateList(numbers);
+            listChanged = true;
+
         }
     }
 }
@@ -118,7 +143,9 @@ std::vector<int> Merge (std::vector<int> l, std::vector<int> r)
             }
         }
         SDL_Delay(5);
+        listChanged = true;
         UpdateList(result);
+        listChanged = true;
     }
     result.pop_back(); // we do this because every time the vector result ends with a extra value (sketchy fix)
     return result;
@@ -175,9 +202,11 @@ int main(int argc, char* args[])
     SDL_Event event;
 
     numbers = Randomize(numbers);
-    
+    int listGenerator = 0;
+
     while (gameRunning)
     {
+        comparer = numbers;
         while (SDL_PollEvent(&event))
         {
             if (event.type == SDL_QUIT)
@@ -199,7 +228,6 @@ int main(int argc, char* args[])
                 if (event.key.keysym.sym == SDLK_2) 
                 {
                     std::cout << "Selection Sort" << std::endl;
-                    // todo: add this to a function, i want to die aaaaa
                     SelectionSort();
                 }
                 if (event.key.keysym.sym == SDLK_3) 
@@ -209,13 +237,12 @@ int main(int argc, char* args[])
                 }
             }
         }
+        GenerateList(numbers);
         SDL_SetRenderDrawColor(window.getRenderer(), 0,0,0,255);
         window.clear();    
-        GenerateList(numbers);
         RenderList();
         window.renderText(textureText, rectangle);
         window.display();
-        entities.clear();
         position = 10;
         window.clear();
     }
